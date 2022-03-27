@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {NoyauService} from "../../services/noyau.service";
 
 @Component({
   selector: 'app-header',
@@ -7,12 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor() { }
+  constructor(protected noyauService: NoyauService) { }
 
   ngOnInit(): void {
   }
 
   toggle() {
-
+    this.noyauService.toggle()
   }
 }

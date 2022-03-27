@@ -7,6 +7,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {NoyauModule} from "./noyau/noyau.module";
 import {EventsService} from "./services/events.service";
 import {HttpClientModule} from "@angular/common/http";
+import {NoyauService} from "./services/noyau.service";
 
 
 @NgModule({
@@ -20,7 +21,7 @@ import {HttpClientModule} from "@angular/common/http";
     NoyauModule,
     HttpClientModule
   ],
-  providers: [EventsService],
+  providers: [EventsService, NoyauService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
