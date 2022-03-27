@@ -1,7 +1,8 @@
 import {Component, OnInit} from '@angular/core';
-import {Event} from '../../infrastructure/models/event.model';
 import {EventsService} from "../../services/events.service";
-import {FormControl, FormGroup} from "@angular/forms";
+import {FormControl, FormGroup, ValidatorFn, Validators} from "@angular/forms";
+import {Event} from "../../infrastructure/models/event.model";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-event-form',
@@ -10,33 +11,44 @@ import {FormControl, FormGroup} from "@angular/forms";
 })
 export class EventFormComponent implements OnInit {
 
-  event: Event = {
-    name: '',
-    description: '',
-    startDate: null,
-    endDate: null,
-  }
-
   eventForm = new FormGroup({
-    name: new FormControl(''),
+    name: new FormControl('', [
+      Validators.required,
+      Validators.maxLength(32)
+    ]),
     description: new FormControl(''),
     startDate: new FormControl(''),
-    endDate: new FormControl(''),
-  });
+    endDate: new FormControl('', [
+    ]),
+  }, [
+    this.checkDates('startDate', 'endDate')
+  ]);
 
-  constructor(protected eventsService: EventsService) {
+  checkDates(start: string, end: string): ValidatorFn {
+    return (form) => {
+      if (form.value[end] < form.value[start]) {
+        return {
+          endDate: 'End date should be less than start date',
+        }
+      }
+      return {};
+    }
+  }
+
+  constructor(protected eventsService: EventsService,
+              protected router: Router) {
   }
 
   submit(event: any) {
-    console.log(this.eventForm.value)
-    // handle dates
-    //this.save();
+    const eventBody = this.eventForm.value
+    console.log('eventBody :', eventBody)
+    this.save(eventBody);
   }
 
-  save() {
-    this.eventsService.createEvent(this.event).subscribe(resp => {
+  save(event: Event) {
+    this.eventsService.createEvent(event).subscribe(resp => {
       // event created
-      // may be redirected to event/list
+      this.router.navigate(['event/list']);
     }, error => {
       // error handling
     })

@@ -1,4 +1,5 @@
 <div>
+  <mat-progress-bar *ngIf="eventsLoading" mode="indeterminate"></mat-progress-bar>
   <table mat-table [dataSource]="events" class="mat-elevation-z8">
 
     <ng-container matColumnDef="name">
