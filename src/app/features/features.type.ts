@@ -1,6 +1,6 @@
 export interface Event {
   name: string;
   description: string;
-  startDate: Date;
-  endDate: Date;
+  startDate: Date | null;
+  endDate: Date | null;
 }

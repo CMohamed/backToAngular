@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Event } from '../features.type'
+import {EventsService} from "../../services/events.service";
 
 @Component({
   selector: 'app-event-form',
@@ -7,7 +9,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EventFormComponent implements OnInit {
 
-  constructor() { }
+  event: Event = {
+    name: '',
+    description: '',
+    startDate: null,
+    endDate: null,
+  }
+
+  constructor(protected eventsService: EventsService) { }
+
+  save() {
+    this.eventsService.createEvent(this.event).subscribe(resp => {
+      // event created
+      // may be redirected to event/list
+    }, error => {
+      // error handling
+    })
+  }
 
   ngOnInit(): void {
   }
