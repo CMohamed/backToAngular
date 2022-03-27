@@ -29,6 +29,7 @@ export class EventListComponent implements OnInit {
       /*setTimeout(() => {
         this.eventsLoading = false;
       }, 3000)*/
+      this.eventsLoading = false;
     });
   }
 
