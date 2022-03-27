@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Event} from '../features.type';
+import {EventsService} from "../../services/events.service";
 
 @Component({
   selector: 'app-event-list',
@@ -14,9 +15,14 @@ export class EventListComponent implements OnInit {
 
   displayedColumns: string[] = ['name', 'description', 'startDate', 'endDate']
 
-  constructor() { }
+  constructor(protected eventsService: EventsService) { }
 
   ngOnInit(): void {
+    this.eventsService.getEvents().subscribe((data: any ) => {
+      this.events = data;
+    }, (error) => {
+      // handle error
+    });
   }
 
 }
