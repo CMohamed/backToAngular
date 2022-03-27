@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { Event } from '../features.type'
+import {Component, OnInit} from '@angular/core';
+import {Event} from '../../infrastructure/models/event.model';
 import {EventsService} from "../../services/events.service";
+import {FormControl, FormGroup} from "@angular/forms";
 
 @Component({
   selector: 'app-event-form',
@@ -16,7 +17,21 @@ export class EventFormComponent implements OnInit {
     endDate: null,
   }
 
-  constructor(protected eventsService: EventsService) { }
+  eventForm = new FormGroup({
+    name: new FormControl(''),
+    description: new FormControl(''),
+    startDate: new FormControl(''),
+    endDate: new FormControl(''),
+  });
+
+  constructor(protected eventsService: EventsService) {
+  }
+
+  submit(event: any) {
+    console.log(this.eventForm.value)
+    // handle dates
+    //this.save();
+  }
 
   save() {
     this.eventsService.createEvent(this.event).subscribe(resp => {

@@ -5,6 +5,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {NoyauModule} from "./noyau/noyau.module";
+import {EventsService} from "./services/events.service";
+import {HttpClientModule} from "@angular/common/http";
 
 
 @NgModule({
@@ -16,8 +18,9 @@ import {NoyauModule} from "./noyau/noyau.module";
     AppRoutingModule,
     BrowserAnimationsModule,
     NoyauModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [EventsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

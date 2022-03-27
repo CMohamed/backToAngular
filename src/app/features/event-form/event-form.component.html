@@ -1,13 +1,33 @@
 <div>
-  <form>
-    <mat-form-field appearance="fill">
+  <form [formGroup]="eventForm" (ngSubmit)="submit($event)">
+    <mat-form-field appearance="outline">
       <mat-label>Name</mat-label>
-      <input matInput placeholder="Name">
+      <input matInput placeholder="Name" formControlName="name">
     </mat-form-field>
     <br>
-    <mat-form-field appearance="fill">
+
+    <mat-form-field appearance="outline">
       <mat-label>Description</mat-label>
-      <textarea matInput placeholder="description"></textarea>
+      <textarea matInput placeholder="description" formControlName="description" ></textarea>
     </mat-form-field>
+    <br>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Choose a date</mat-label>
+      <input matInput [matDatepicker]="pickerStart" formControlName="startDate">
+      <mat-datepicker-toggle matSuffix [for]="pickerStart"></mat-datepicker-toggle>
+      <mat-datepicker #pickerStart></mat-datepicker>
+    </mat-form-field>
+    <br>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Choose a date</mat-label>
+      <input matInput [matDatepicker]="pickerEnd" formControlName="endDate">
+      <mat-datepicker-toggle matSuffix [for]="pickerEnd"></mat-datepicker-toggle>
+      <mat-datepicker #pickerEnd></mat-datepicker>
+    </mat-form-field>
+    <br>
+
+    <button mat-raised-button color="primary" type="submit">Create Event</button>
   </form>
 </div>

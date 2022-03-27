@@ -3,16 +3,14 @@ import { HttpClient, HttpHeaders } from '@angular/common/http'
 import { Observable, BehaviorSubject } from 'rxjs';
 import {BaseHttpClient} from '../infrastructure/http-clients/base.http-client';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class EventsService extends BaseHttpClient {
-  
-  private BASE_URI: string = "";
-  private EVENT_LIST_ENDPOINT: string = "";
-  private CREATE_EVENT_ENDPOINT: string = "";
 
-  constructor(private httpClient: HttpClient) { 
+  private BASE_URI: string = "localhost:5001";
+  private EVENT_LIST_ENDPOINT: string = "/event/list";
+  private CREATE_EVENT_ENDPOINT: string = "/event";
+
+  constructor(private httpClient: HttpClient) {
     super(httpClient);
   }
 
