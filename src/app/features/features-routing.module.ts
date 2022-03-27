@@ -5,11 +5,11 @@ import {EventListComponent} from "./event-list/event-list.component";
 
 const routes: Routes = [
   {
-    path: '/create',
+    path: 'event/add',
     component: EventFormComponent,
   },
   {
-    path: '/list',
+    path: 'event/list',
     component: EventListComponent,
   }
 ];
