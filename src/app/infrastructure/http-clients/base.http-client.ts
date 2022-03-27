@@ -27,7 +27,6 @@ export abstract class BaseHttpClient {
     const url = this.buildCompleteUrl(endpoint);
     const headers = this.createBaseHeaders();
 
-    console.log('url', url);
     return this.http.get<TResult>(url, {
       headers: headers
     });

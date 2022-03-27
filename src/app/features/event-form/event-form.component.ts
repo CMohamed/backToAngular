@@ -41,7 +41,6 @@ export class EventFormComponent implements OnInit {
 
   submit(event: any) {
     const eventBody = this.eventForm.value
-    console.log('eventBody :', eventBody)
     this.save(eventBody);
   }
 
