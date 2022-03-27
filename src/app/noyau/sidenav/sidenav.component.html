@@ -1,1 +1,10 @@
-<p>sidenav works!</p>
+<mat-sidenav-container class="example-container">
+  <mat-sidenav #sidenav mode="side" [(opened)]="opened">
+    <div style="border: 2px solid red"></div>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <div style="border: 2px solid green">
+      <router-outlet></router-outlet>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>

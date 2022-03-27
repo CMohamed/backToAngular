@@ -4,6 +4,8 @@ import { HeaderComponent } from './header/header.component';
 import {MatToolbarModule} from "@angular/material/toolbar";
 import {MatIconModule} from "@angular/material/icon";
 import { SidenavComponent } from './sidenav/sidenav.component';
+import {MatSidenavModule} from "@angular/material/sidenav";
+import {AppRoutingModule} from "../app-routing.module";
 
 
 
@@ -13,12 +15,15 @@ import { SidenavComponent } from './sidenav/sidenav.component';
     SidenavComponent
   ],
   exports: [
-    HeaderComponent
+    HeaderComponent,
+    SidenavComponent
   ],
-  imports: [
-    CommonModule,
-    MatToolbarModule,
-    MatIconModule
-  ]
+    imports: [
+        CommonModule,
+        MatToolbarModule,
+        MatIconModule,
+        MatSidenavModule,
+        AppRoutingModule
+    ]
 })
 export class NoyauModule { }
