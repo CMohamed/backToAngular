@@ -1,6 +1,5 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
-//import { UrlSerializerUtil } from '../utils/url-serializer.util';
 
 export abstract class BaseHttpClient {
   protected constructor(protected http: HttpClient) {
@@ -24,10 +23,8 @@ export abstract class BaseHttpClient {
     });
   }
 
-  public get<TQuery, TResult>(endpoint: string, parametersToSerialize: TQuery | null = null): Observable<TResult> {
-    const params = ''; //(parametersToSerialize) ? UrlSerializerUtil.serialize(parametersToSerialize) : '';
-
-    const url = this.buildCompleteUrl(endpoint) + params;
+  public get<TQuery, TResult>(endpoint: string): Observable<TResult> {
+    const url = this.buildCompleteUrl(endpoint);
     const headers = this.createBaseHeaders();
 
     return this.http.get<TResult>(url, {
@@ -51,7 +48,8 @@ export abstract class BaseHttpClient {
   }
 
   private createBaseHeaders(): HttpHeaders {
-    let accessToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNzE2MjM5MDIyfQ.gFgwPdkGPEcQGjoy934vFv9pyjVO6e_18MAF7Fpf9kI';
+    // get access token
+    // let accessToken = '';
     let headers = new HttpHeaders();
 
     headers = headers.append('Content-Type', 'application/json');
@@ -59,7 +57,7 @@ export abstract class BaseHttpClient {
     headers = headers.append('Access-Control-Allow-Origin', 'http://localhost:4200');
     headers = headers.append('Access-Control-Allow-Headers', 'application/json');
     headers = headers.append('Access-Control-Allow-Methods', '*');
-    headers = headers.append('Authorization', 'Bearer ' + accessToken);
+    // headers = headers.append('Authorization', 'Bearer ' + accessToken);
 
     return headers;
   }
