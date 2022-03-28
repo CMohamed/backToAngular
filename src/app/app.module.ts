@@ -3,6 +3,12 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {NoyauModule} from "./noyau/noyau.module";
+import {EventsService} from "./services/events.service";
+import {HttpClientModule} from "@angular/common/http";
+import {NoyauService} from "./services/noyau.service";
+
 
 @NgModule({
   declarations: [
@@ -10,9 +16,12 @@ import { AppComponent } from './app.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    NoyauModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [EventsService, NoyauService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
