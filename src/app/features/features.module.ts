@@ -16,6 +16,7 @@ import {
   NgxMatNativeDateModule,
   NgxMatTimepickerModule
 } from "@angular-material-components/datetime-picker";
+import {MatPaginatorModule} from "@angular/material/paginator";
 
 
 @NgModule({
@@ -36,7 +37,8 @@ import {
     MatProgressBarModule,
     NgxMatDatetimePickerModule,
     NgxMatTimepickerModule,
-    NgxMatNativeDateModule
+    NgxMatNativeDateModule,
+    MatPaginatorModule
   ]
 })
 export class FeaturesModule {
